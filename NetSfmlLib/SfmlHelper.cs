@@ -79,6 +79,13 @@ namespace NetSfmlLib
             byte b = (byte)Convert.ToInt32(hexcolor.Substring(0, 6), 16);
             return new Color(r, g, b, 255);
         }
+        public static Color createSFMLColorBetween(Color c1, Color c2, float r)
+        {
+            int nr = Math.Min((int)(c1.R + (c2.R - c1.R) * r), 255);
+            int ng = Math.Min((int)(c1.G + (c2.G - c1.G) * r), 255);
+            int nb = Math.Min((int)(c1.B + (c2.B - c1.B) * r), 255);
+            return new Color((byte)nr,(byte)ng,(byte)nb) ;
+        }
         public static Sound LoadSound(String filename)
         {
             return new Sound(new SoundBuffer(filename));
